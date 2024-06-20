@@ -1,0 +1,19 @@
+name: publish_$(Build.BuildId)
+pool:
+  vmImage: 'windows-2019'
+variables:
+  azureSubscriptionEndpoint: 'WFM-Development'
+
+trigger: none
+pr: none
+
+jobs:
+  - job: 'BuildDockerImageFromArtifacts'
+    timeoutInMinutes: 120
+
+      - task: DockerCompose@0
+        displayName: 'Build Image'
+        timeoutInMinutes: 90
+        inputs:
+          action: 'Build services'
+          dockerComposeFile: 'docker-compose.yml'
