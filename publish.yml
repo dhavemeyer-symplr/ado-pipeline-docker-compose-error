@@ -7,8 +7,6 @@ pr: none
 
 jobs:
   - job: 'BuildDockerImageFromArtifacts'
-    timeoutInMinutes: 120
-
       - task: DockerCompose@0
         displayName: 'Build Image'
         timeoutInMinutes: 90
