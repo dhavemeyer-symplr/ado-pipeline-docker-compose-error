@@ -1,8 +1,6 @@
 name: publish_$(Build.BuildId)
 pool:
   vmImage: 'windows-2019'
-variables:
-  azureSubscriptionEndpoint: 'WFM-Development'
 
 trigger: none
 pr: none
