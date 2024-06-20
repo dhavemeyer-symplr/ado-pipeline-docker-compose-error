@@ -1,0 +1,16 @@
+name: publish_$(Build.BuildId)
+pool:
+  vmImage: 'windows-2019'
+
+trigger: none
+pr: none
+
+jobs:
+  - job: 'BuildDockerImageFromArtifacts'
+      - task: DockerCompose@0
+        displayName: 'Build Image'
+        timeoutInMinutes: 90
+        inputs:
+          action: 'Build services'
+          projectName: 'fix-it'
+          dockerComposeFile: 'docker-compose.yml'
